@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Google Form Embed with Timer</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f3f3f3;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        
+        h1 {
+            color: #333;
+            margin-top: 0;
+        }
+        
+        #timer {
+            font-size: 48px;
+            margin: 20px 0;
+            color: #333;
+        }
+        
+        .form-container {
+            position: relative;
+            padding-bottom: 75%;
+            height: 0;
+            overflow: hidden;
+        }
+        
+        .form-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>My Embedded Google Form</h1>
+        <div id="timer">02:00</div>
+        <div class="form-container">
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSd6FDtBV0dAFG4xd0HNOrD9uXVmQFzp2aBWuh0LlKUpdrPpgg/viewform?embedded=true" width="640" height="21217" frameborder="0" marginheight="0" marginwidth="0">පූරණය කරමින්…</iframe>
+        </div>
+    </div>
+
+    <script>
+        // Set the time limit in seconds (2 minutes = 120 seconds)
+        var timeLimit = 120;
+
+        // Function to start the timer
+        function startTimer(duration, display) {
+            var timer = duration, minutes, seconds;
+            setInterval(function () {
+                minutes = parseInt(timer / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                display.textContent = minutes + ":" + seconds;
+
+                if (--timer < 0) {
+                    // Timer has reached zero, perform any desired action here
+                    // For example, you can redirect to another page or display a message
+                }
+            }, 1000);
+        }
+
+        // Start the timer when the page loads
+        window.onload = function () {
+            var display = document.querySelector('#timer');
+            startTimer(timeLimit, display);
+        };
+    </script>
+</body>
+</html>
