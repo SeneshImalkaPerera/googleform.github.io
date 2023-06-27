@@ -49,7 +49,8 @@
             height: 100%;
             border: none;
         }
-        img{
+        
+        img {
             width: 750px;
             border-radius: 5px;
             height: 200px;
@@ -61,7 +62,7 @@
         <img src="වසරේ වාණිජවේදියා (2).png" alt="">
         <div id="timer">02:00</div>
         <div class="form-container">
-            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSd6FDtBV0dAFG4xd0HNOrD9uXVmQFzp2aBWuh0LlKUpdrPpgg/viewform?embedded=true" width="640" height="21217" frameborder="0" marginheight="0" marginwidth="0">පූරණය කරමින්…</iframe>
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSd6FDtBV0dAFG4xd0HNOrD9uXVmQFzp2aBWuh0LlKUpdrPpgg/viewform?embedded=true" width="640" height="800" frameborder="0" marginheight="0" marginwidth="0">පූරණය කරමින්…</iframe>
         </div>
     </div>
 
@@ -80,6 +81,9 @@
                 display.textContent = minutes + ":" + seconds;
 
                 if (--timer < 0) {
+                    // Add code here to handle when the timer reaches zero
+                    clearInterval(timer);
+                    // For example, you could display a message or submit the form
                 }
             }, 1000);
         }
@@ -91,3 +95,4 @@
     </script>
 </body>
 </html>
+
