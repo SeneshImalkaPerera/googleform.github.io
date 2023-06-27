@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>වසරේ වාණිජවේදියා</title>
+    <title>Google Form Embed with Timer</title>
     <style>
         * {
             box-sizing: border-box;
@@ -52,6 +52,7 @@
         img{
             width: 750px;
             border-radius: 5px;
+            height: 200px;
         }
     </style>
 </head>
@@ -65,12 +66,13 @@
     </div>
 
     <script>
+        // Set the time limit in seconds (2 minutes = 120 seconds)
         var timeLimit = 120;
 
-
+        // Function to start the timer
         function startTimer(duration, display) {
             var timer = duration, minutes, seconds;
-            setInterval(function () {
+            var interval = setInterval(function () {
                 minutes = parseInt(timer / 60, 10);
                 seconds = parseInt(timer % 60, 10);
 
@@ -80,12 +82,15 @@
                 display.textContent = minutes + ":" + seconds;
 
                 if (--timer < 0) {
-
+                    // Timer has reached zero, perform any desired action here
+                    // For example, you can redirect to another page or display a message
+                    clearInterval(interval);
+                    display.textContent = "00:00";
                 }
             }, 1000);
         }
 
-
+        // Start the timer when the page loads
         window.onload = function () {
             var display = document.querySelector('#timer');
             startTimer(timeLimit, display);
@@ -93,4 +98,3 @@
     </script>
 </body>
 </html>
-
